@@ -4,7 +4,7 @@ import create from "./add.png";
 import teamsLogo from "./teams.png";
 import outlookLogo from "./outlook.png";
 import igsLogo from "./igs.jpg";
-import instagramLogo from "./instagram.webp";
+import instagramLogo from "./insta.png";
 import storeLogo from "./appStore.png";
 import arrow from "./right-arrow.png";
 import deleteBtn from "./delete.png";

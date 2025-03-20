@@ -8,6 +8,7 @@ import projectRoutes from "./Routes/project.routes.js";
 import connectCloudinary from "./Database/Cloudinary.js";
 import reviewRoutes from "./Routes/reviews.routes.js";
 import path from "path";
+import npmRoutes from "./Routes/npm.routes.js";
 const app = express();
 
 const __dirname = path.resolve();
@@ -21,6 +22,7 @@ const port = ENV_VARS.port;
 app.use("/api/users/v1", userRoutes);
 app.use("/api/projects/v1", projectRoutes);
 app.use("/api/reviews/v1", reviewRoutes);
+app.use("/api/npm/v1", npmRoutes);
 
 app.use(errorHandler);
 

@@ -1,5 +1,5 @@
-import { ReviewModel } from "../models/review.model.js";
-import { ProjectModel } from "../models/project.model.js";
+import { ReviewModel } from "../Models/review.model.js";
+import { ProjectModel } from "../Models/project.model.js";
 import mongoose from "mongoose";
 
 export const addReview = async (req, res, next) => {

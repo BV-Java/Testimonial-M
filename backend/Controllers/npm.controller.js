@@ -43,7 +43,7 @@ export const addReview = async (req, res, next) => {
 
 export const getReview = async (req, res) => {
   try {
-    const { passcode, passkey, reviewerEmail } = req.body;
+    const { passcode, passkey, reviewerEmail } = req.query;
 
     if (!passcode || !passkey || !reviewerEmail) {
       return res.status(400).json({
@@ -88,7 +88,7 @@ export const getReview = async (req, res) => {
 export const getAllReviews = async (req, res) => {
   try {
     const { passcode } = req.params;
-    const { passkey } = req.body;
+    const { passkey } = req.query;
 
     if (!passcode || !passkey) {
       return res.status(400).json({
@@ -211,7 +211,7 @@ export const normalReport = async (req, res) => {
 export const getAnalyticsOfTestimonialForTheProject = async (req, res) => {
   try {
     const { passcode } = req.params;
-    const { passkey } = req.body;
+    const { passkey } = req.query;
 
     if (!passcode || !passkey) {
       return res.status(400).json({
@@ -305,7 +305,7 @@ export const getAnalyticsOfTestimonialForTheProject = async (req, res) => {
 export const getTopReviews = async (req, res) => {
   try {
     const { passcode } = req.params;
-    const { passkey } = req.body;
+    const { passkey } = req.query;
 
     if (!passcode || !passkey) {
       return res.status(400).json({
@@ -345,7 +345,7 @@ export const getTopReviews = async (req, res) => {
 export const getSusReviews = async (req, res) => {
   try {
     const { passcode } = req.params;
-    const { passkey } = req.body;
+    const { passkey } = req.query;
 
     if (!passcode || !passkey) {
       return res.status(400).json({
@@ -385,7 +385,7 @@ export const getSusReviews = async (req, res) => {
 export const getBadReviews = async (req, res) => {
   try {
     const { passcode } = req.params;
-    const { passkey } = req.body;
+    const { passkey } = req.query;
 
     if (!passcode || !passkey) {
       return res.status(400).json({

@@ -5,25 +5,39 @@ import mongoose from "mongoose";
 export const addReview = async (req, res, next) => {
   const session = await mongoose.startSession();
   session.startTransaction();
-  try {
-    const { reviewerEmail, projectId, name, review, rating } = req.body;
+  const { passcode } = req.params;
+  const { passkey } = req.query;
 
-    if (!reviewerEmail || !projectId || !review || !rating) {
+  console.log(passcode, passkey);
+
+  try {
+    const { reviewerEmail, name, review, rating } = req.body;
+
+    if (!reviewerEmail || !passcode || !review || !rating || !passkey) {
       return res.status(400).json({ message: "All fields are required." });
     }
 
-    const project = await ProjectModel.findById(projectId);
+    const project = await ProjectModel.findOne({ passcode, passkey });
     if (!project)
       return res.status(404).json({ message: "Project not found." });
+
+    const reviewData = await ReviewModel.findOne({ reviewerEmail });
+    if (reviewData) {
+      const error = new Error("You have already reviewed this project.");
+      error.statusCode = 400;
+      throw error;
+    }
 
     const newReview = await ReviewModel.create(
       [
         {
           reviewerEmail,
-          project: projectId,
+          project: project._id,
           name,
           review,
           rating,
+          isReviewed: true,
+          isVerified: true,
         },
       ],
       { session }
@@ -126,18 +140,24 @@ export const getAllReviews = async (req, res) => {
 
 export const reportSus = async (req, res) => {
   try {
-    const { reviewerEmail, projectId } = req.body;
+    const { passcode } = req.params;
+    const { passkey } = req.query;
+    const { reviewerEmail } = req.body;
 
-    if (!reviewerEmail || !projectId) {
+    console.log(passcode, passkey);
+
+    if (!reviewerEmail) {
       return res.status(400).json({
         success: false,
-        message: "Both reviewerEmail and projectId are required.",
+        message: "Both reviewerEmail are required.",
       });
     }
 
+    const projectData = await ProjectModel.findOne({ passcode, passkey });
+
     const review = await ReviewModel.findOne({
       reviewerEmail,
-      project: projectId,
+      project: projectData._id,
     });
 
     if (!review) {
@@ -168,18 +188,22 @@ export const reportSus = async (req, res) => {
 
 export const normalReport = async (req, res) => {
   try {
-    const { reviewerEmail, projectId } = req.body;
+    const { reviewerEmail } = req.body;
+    const { passcode } = req.params;
+    const { passkey } = req.query;
 
-    if (!reviewerEmail || !projectId) {
+    if (!reviewerEmail) {
       return res.status(400).json({
         success: false,
-        message: "Both reviewerEmail and projectId are required.",
+        message: "Both reviewerEmail are required.",
       });
     }
 
+    const projectData = await ProjectModel.findOne({ passcode, passkey });
+
     const review = await ReviewModel.findOne({
       reviewerEmail,
-      project: projectId,
+      project: projectData._id,
     });
 
     if (!review) {
@@ -473,7 +497,11 @@ export const getReviewsByRating = async (req, res) => {
 
 export const deleteReview = async (req, res) => {
   try {
-    const { reviewerEmail, passcode, passkey } = req.body;
+    const { reviewerEmail } = req.body;
+    const { passcode } = req.params;
+    const { passkey } = req.query;
+
+    console.log(passcode, passkey);
 
     if (!reviewerEmail || !passcode || !passkey) {
       return res.status(400).json({
@@ -522,7 +550,9 @@ export const editReview = async (req, res) => {
   const session = await mongoose.startSession();
   session.startTransaction();
   try {
-    const { reviewerEmail, passcode, passkey } = req.body;
+    const { reviewerEmail } = req.body;
+    const { passcode } = req.params;
+    const { passkey } = req.query;
 
     if (!reviewerEmail || !passcode || !passkey) {
       return res.status(400).json({

@@ -88,9 +88,12 @@ const Navbar = ({ userData }) => {
               >
                 Projects
               </Link>
-              <button className="px-2 py-1 hover:bg-neutral-content active:bg-neutral-content/80 rounded-lg cursor-pointer">
+              <Link
+                to={"/docs"}
+                className="px-2 py-1 hover:bg-neutral-content active:bg-neutral-content/80 rounded-lg cursor-pointer"
+              >
                 Documentation
-              </button>
+              </Link>
             </div>
 
             {/* Profile */}
@@ -126,9 +129,12 @@ const Navbar = ({ userData }) => {
       {!userData && (
         <>
           <div className="flex justify-end items-center w-full gap-5">
-            <button className="px-2 py-1 hover:underline active:bg-neutral-content/80 rounded-lg cursor-pointer">
+            <Link
+              to={"/docs"}
+              className="px-2 py-1 hover:underline active:bg-neutral-content/80 rounded-lg cursor-pointer"
+            >
               Documentation
-            </button>
+            </Link>
 
             <Link
               to={"/login"}

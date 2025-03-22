@@ -4,17 +4,17 @@ import { Step1, Step2 } from "../../../Data/userData.js";
 
 const Goto = () => {
   return (
-    <section className="flex flex-col gap-20">
-      <div className="flex justify-between">
+    <section className="flex flex-col gap-20 px-1">
+      <div className="flex justify-between flex-col lg:flex-row items-center">
         <div>
           <Steps Step={Step1} />
         </div>
 
-        <div className="w-[430px] h-96 bg-gray-300"></div>
+        <div className="w-full max-w-[430px]  bg-gray-300"></div>
       </div>
 
-      <div className="flex justify-between">
-        <div className="w-[430px] h-96 bg-gray-300"></div>
+      <div className="flex justify-between flex-col lg:flex-row items-center">
+        <div className="w-full max-w-[430px]  bg-gray-300"></div>
 
         <div>
           <Steps Step={Step2} />

@@ -2,7 +2,7 @@ import React from "react";
 
 const Steps = ({ Step }) => {
   return (
-    <div className="w-[550px] h-[200px] flex flex-col gap-5">
+    <div className="w-full max-w-[550px] h-[200px] flex flex-col gap-5">
       <div className="flex items-end gap-2">
         <div className="w-[5px] h-[50px] bg-primary"></div>
         <h1 className="text-4xl font-montserrat">{Step.question}</h1>

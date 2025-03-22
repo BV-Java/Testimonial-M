@@ -9,6 +9,8 @@ import { PageLoader } from "./Skeleton/index.js";
 import { Toaster } from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import TestimonialNPMPackageDocs from "./Pages/Other/TestimonialNPMPackageDocs.jsx";
+import Footer from "./components/Layout/Footer.jsx";
 
 const App = () => {
   const location = useLocation();
@@ -39,7 +41,7 @@ const App = () => {
     );
 
   return (
-    <div>
+    <div className="relative">
       <div
         className={`max-w-[1120px] mx-auto py-3 min-h-screen ${
           location.pathname.startsWith("/project/") ||
@@ -73,11 +75,13 @@ const App = () => {
             element={!userData ? <Login /> : <Navigate to={"/"} />}
           />
           <Route path="/submission" element={<Submission />} />
+          <Route path="/docs" element={<TestimonialNPMPackageDocs />} />
           <Route path="/*" element={<LostWay />} />
           <Route path="/no-access" element={<Naughty />} />
         </Routes>
       </div>
       <Toaster />
+      <Footer />
     </div>
   );
 };

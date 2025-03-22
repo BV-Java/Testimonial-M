@@ -27,7 +27,7 @@ const Work = () => {
   }
 
   return (
-    <section className=" mt-20 border-stroke rounded-lg mx-2">
+    <section className=" mt-20 border-stroke rounded-lg mx-2 mb-56">
       <div className="px-10 py-4">
         <p className="text-[40px] font-montserrat">
           Lets <span className="font-bold text-error">Work</span>

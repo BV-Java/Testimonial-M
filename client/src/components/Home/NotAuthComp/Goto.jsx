@@ -4,7 +4,7 @@ import { Step1, Step2 } from "../../../Data/userData.js";
 
 const Goto = () => {
   return (
-    <section className="flex flex-col gap-20 px-1">
+    <section className="flex flex-col gap-20 px-1 mb-20">
       <div className="flex justify-between flex-col lg:flex-row items-center">
         <div>
           <Steps Step={Step1} />

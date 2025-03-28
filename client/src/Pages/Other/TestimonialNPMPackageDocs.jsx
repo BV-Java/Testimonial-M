@@ -49,7 +49,10 @@ const testimonial = connectToTestimonialsDB("yourPasscode", "yourPasskey");`}
             normalReport(&#123; email &#125;) – Unmark a previously suspicious
             review.
           </li>
-          <li>getAnalytics() – Get analytics for your project.</li>
+          <li>
+            getAnalyticsOfTestimonialForTheProject() – Get analytics for your
+            project.
+          </li>
           <li>
             getProjectDetails() – Get details of your testimonial project.
           </li>

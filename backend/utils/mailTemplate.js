@@ -3,7 +3,7 @@ export const Password_Template = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reset OTP Email</title>
+  <title>Verify OTP Email</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -21,7 +21,7 @@ export const Password_Template = `<!DOCTYPE html>
     }
     .header {
       text-align: center;
-      background-color: #4CAF50;
+      background-color: #007BFF;
       padding: 10px 0;
       color: white;
       border-radius: 8px 8px 0 0;
@@ -35,7 +35,7 @@ export const Password_Template = `<!DOCTYPE html>
       display: inline-block;
       font-size: 18px;
       font-weight: bold;
-      color: #4CAF50;
+      color: #007BFF;
       background-color: #f9f9f9;
       padding: 10px 20px;
       border-radius: 5px;
@@ -52,13 +52,13 @@ export const Password_Template = `<!DOCTYPE html>
 <body>
   <div class="email-container">
     <div class="header">
-      <h2>Password Reset Request</h2>
+      <h2>OTP Verification</h2>
     </div>
     <div class="content">
       <p>Dear {{email}},</p>
-      <p>We received a request to reset your password. Use the OTP below to proceed:</p>
+      <p>Your One-Time Password (OTP) for verification is:</p>
       <div class="otp">{{otp}}</div>
-      <p>If you didn't request this, please ignore this email or contact support.</p>
+      <p>Please enter this OTP to complete your verification process. If you did not request this, please ignore this email.</p>
       <p>Thank you,<br>The Team</p>
     </div>
     <div class="footer">
